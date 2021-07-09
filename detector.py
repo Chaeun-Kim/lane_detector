@@ -58,7 +58,7 @@ def find_lanes_on_images():
 	Go through images in the /data/images/ directory and
 	find the lanes in each image and save off the output
 	"""
-	for image_file in os.listdir(IMAGE_DIR)[-1:]:
+	for image_file in os.listdir(IMAGE_DIR):
 		image = mpimg.imread(f'{IMAGE_DIR}/{image_file}')
 
 		result = process_image(image)
@@ -71,7 +71,7 @@ def find_lanes_on_videos():
 	Go through videos in the /data/videos/ directory and
 	trace the lanes in each video and save off the output
 	"""
-	for video in os.listdir(VIDEO_DIR)[-1:]:
+	for video in os.listdir(VIDEO_DIR):
 		clip = VideoFileClip(f'{VIDEO_DIR}/{video}')
 		processed_clip = clip.fl_image(process_image)
 		save_video(processed_clip, OUT_VIDEO_DIR, video)
