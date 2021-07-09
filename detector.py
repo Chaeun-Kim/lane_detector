@@ -35,11 +35,9 @@ def process_image(image):
 	gray_image = grayscale(image)
 	# apply gaussian noise filtering
 	blur_gray = gaussian_blur(gray_image, GAUSSIAN_KERNEL)
-	save_img(blur_gray, IMAGE_DIR, 'blur_grayscale.jpg')
 
 	# Canny transform to detect lines
 	lines = canny(blur_gray, CANNY_LOW_THRESHOLD, CANNY_HI_THRESHOLD)
-	save_img(lines, IMAGE_DIR, 'canny_edge.jpg')
 
 	# points of the important polygon area
 	masking_region = np.array([[
@@ -51,7 +49,6 @@ def process_image(image):
 
 	# get hough transformed lines
 	detected_lines = hough_lines(masked_lines, 2, np.pi/180, 50, 5, 10)
-	save_img(lines, IMAGE_DIR, 'hough_transformed.jpg')
 
 	# return the orginal image with hough lines drawn
 	return weighted_img(detected_lines, image)

@@ -23,9 +23,34 @@ The goals / steps of this project are the following:
 
 ---
 
-### Reflection
+## Contents
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+* `/data` - a directory consisted of test image/video files and test outputs
+* `/lib` - a library directory with `helper.py`
+	* `helper.py` - helper functions
+* `detector.py` - main script which will detect road lanes on images/videos
+
+## Running the lane detector
+
+Clone this repo, and simply run the following commands at the root
+
+* `pip install -r requirements.txt`
+* `python detector.py`
+
+
+## Reflection
+
+### Pipeline Overview
+
+1. Preprocess the image
+	* convert the image to grayscale
+	* blur the grayscale image using Gaussian function
+2. Detect all the edges in the grayscale image using Canny algorithm
+3. Ignore the edges outside of the region of interest
+4. Detect relevant line from the edges
+5. Draw out the relevant lines (lanes we care about) on the original image
+
+#### Preprocessing 
 
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
 
